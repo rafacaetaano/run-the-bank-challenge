@@ -29,7 +29,7 @@ public class AccountServiceImpl implements AccountService{
 		entity.setAgency(request.getAgency());
 		entity.setBalance(request.getBalance());
 		entity.setStatus(request.isAccountStatus());
-		//verifricar se existe customer antes de salvar idCustomer
+		//verifica se existe customer antes de salvar idCustomer
 		Customer customer = customerRepository.findById(request.getIdCustomer()).orElse(null);
 		entity.setIdCustomer(customer != null ? customer.getId() : null);
 		accountRepository.save(entity);
