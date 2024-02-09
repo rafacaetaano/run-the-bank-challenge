@@ -11,7 +11,7 @@ public class AccountDTO {
 	
 	private Long balance;
 	
-	private boolean accountStatus;
+	private boolean active;
 	
 	private String customerName;
 	

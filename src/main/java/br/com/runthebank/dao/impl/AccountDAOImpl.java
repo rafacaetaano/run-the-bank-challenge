@@ -29,7 +29,7 @@ public class AccountDAOImpl implements AccountDAO{
 		Account entity = new Account();
 		entity.setAgency(request.getAgency());
 		entity.setBalance(request.getBalance());
-		entity.setStatus(request.isAccountStatus());
+		entity.setActive(request.isActive());
 		//verifica se existe customer antes de salvar idCustomer
 		Customer customer = customerDAOImpl.getCustomerById(request.getIdCustomer());
 		entity.setIdCustomer(customer.getId());

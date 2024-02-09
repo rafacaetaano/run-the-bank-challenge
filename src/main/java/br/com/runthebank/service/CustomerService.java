@@ -6,4 +6,6 @@ public interface CustomerService {
 
 	CustomerDTO insert(CustomerDTO customer);
 	
+	CustomerDTO show(Long id);
+	
 }

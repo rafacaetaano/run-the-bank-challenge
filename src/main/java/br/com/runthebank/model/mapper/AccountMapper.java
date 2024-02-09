@@ -11,7 +11,7 @@ public class AccountMapper {
 
 	public AccountDTO fromEntityToDTO(Account entity, Customer entityCustomer) {
 		AccountDTO dto = new AccountDTO();
-		dto.setAccountStatus(entity.isStatus());
+		dto.setActive(entity.isActive());
 		dto.setAgency(entity.getAgency());
 		dto.setBalance(entity.getBalance());
 		dto.setCustomerName(entityCustomer != null ? entityCustomer.getName() : "");

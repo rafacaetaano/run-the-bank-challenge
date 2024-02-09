@@ -14,9 +14,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Autowired
 	private CustomerRepository customerRepository;
-
 	@Override
-	public void saveCustomer(CustomerDTO request) throws RunTheBankException{
+	public void saveCustomer(CustomerDTO request) throws RunTheBankException {
 		Customer existEntity = customerRepository.findCustomerByDocument(request.getDocument());
 		if (existEntity == null) {
 			Customer entity = new Customer();

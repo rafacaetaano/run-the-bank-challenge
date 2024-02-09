@@ -20,7 +20,7 @@ public class Account {
 	@Column
 	private Long balance;
 	@Column
-	private boolean status;
+	private boolean active;
 	@Column
 	private Long idCustomer;
 	

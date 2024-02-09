@@ -11,7 +11,7 @@ public class AccountRequestDTO {
 	
 	private Long balance;
 	
-	private boolean accountStatus;
+	private boolean active;
 	
 	private Long idCustomer;
 	

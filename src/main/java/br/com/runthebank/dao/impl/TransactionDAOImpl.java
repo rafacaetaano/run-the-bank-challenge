@@ -31,7 +31,7 @@ public class TransactionDAOImpl implements TransactionDAO{
 	@Transactional(rollbackFor = RunTheBankException.class)
 	public void validateTransaction(TransactionRequestDTO request, Account accountPayer, Account accountPayee) {
 		if(accountPayer != null && accountPayee != null) {
-			if(accountPayer.isStatus() && accountPayee.isStatus()) {
+			if(accountPayer.isActive() && accountPayee.isActive()) {
 				if(accountPayer.getBalance() >= request.getAmount()) {
 					accountPayer.setBalance(accountPayer.getBalance() - request.getAmount());
 					accountPayee.setBalance(accountPayee.getBalance() + request.getAmount());

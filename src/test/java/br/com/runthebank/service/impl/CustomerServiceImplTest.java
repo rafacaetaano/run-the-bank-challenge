@@ -1,15 +1,17 @@
 package br.com.runthebank.service.impl;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.mock;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
@@ -21,12 +23,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import br.com.runthebank.dao.impl.CustomerDAOImpl;
 import br.com.runthebank.entity.Customer;
 import br.com.runthebank.model.dto.CustomerDTO;
+import br.com.runthebank.model.mapper.CustomerMapper;
 import br.com.runthebank.repository.CustomerRepository;
 
 @ExtendWith(MockitoExtension.class)
 @ActiveProfiles("test")
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class CustomerServiceImplTest {
+	
+	@Mock
+	private CustomerMapper mapper;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -43,6 +49,7 @@ public class CustomerServiceImplTest {
 	@BeforeEach
 	void setup() throws Exception {
 		MockitoAnnotations.openMocks(this);
+		mapper = mock(CustomerMapper.class);
 	}
 	
 	@Test
@@ -53,6 +60,13 @@ public class CustomerServiceImplTest {
 		when(customerRepository.save(any())).thenReturn(null);
 		
 		customerServiceImpl.insert(getCustomerDTO());
+	}
+	
+	@Test
+	public void testShow() {
+		when(customerDAOImpl.getCustomerById(anyLong())).thenReturn(getCustomer());
+		when(mapper.fromEntityToDTO(getCustomer())).thenReturn(getCustomerDTO());
+		customerServiceImpl.show(anyLong());
 	}
 	
 	
