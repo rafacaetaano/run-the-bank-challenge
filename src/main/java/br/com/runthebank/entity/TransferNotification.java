@@ -28,4 +28,5 @@ public class TransferNotification {
 	
 	@Column
 	private Date notificationDate;
+	
 }
