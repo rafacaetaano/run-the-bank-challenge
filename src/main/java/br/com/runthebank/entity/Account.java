@@ -1,7 +1,6 @@
 package br.com.runthebank.entity;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +8,6 @@ import lombok.Setter;
 @Table(name = "ACCOUNTS")
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
 public class Account {
 	
 	@Id
